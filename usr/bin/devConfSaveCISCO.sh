@@ -133,7 +133,7 @@ IFS=$saveIFS
   if [ $RETVAL -eq 1 ]; then echo " SNMP operation ccCopyFileName error!!!" >> $logFile; exit 1; fi
   snmpset -v 2c -O qv -t 5 -c $snmpCommunity $devIP CISCO-CONFIG-COPY-MIB::ccCopyEntryRowStatus.$r i $active
   RETVAL=$?
-  # if [ $RETVAL -eq 1 ]; then echo " SNMP operation ccCopyEntryRowStatus error!!!" >> $logFile; exit 1; fi
+  if [ $RETVAL -eq 1 ]; then echo " SNMP operation ccCopyEntryRowStatus error!!!" >> $logFile; exit 1; fi
   sleep 1s
   
   i=1
